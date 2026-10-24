@@ -1,0 +1,65 @@
+# Günlük AI Brifing ayarları
+# Bu dosyayı düzenleyerek konuları, kaynakları ve brifing uzunluğunu değiştirebilirsin.
+
+# Kaç saat öncesine kadar olan içerikler "yeni" sayılsın
+lookback_hours: 30
+
+# Her konudan Gemini'ye gönderilecek en fazla kayıt sayısı
+max_items_per_topic: 10
+
+# Telegram mesajında her konu için gösterilecek en fazla haber
+show_per_topic: 4
+
+# Gemini'nin verdiği önem puanı (1-5) bunun altındaysa haber gösterilmez
+min_importance: 3
+
+# Gemini'ye okuyucunun ilgi alanlarını anlatır; önem puanlamasını buna göre yapar
+interests: >
+  Görüntü işleme ve nesne tespiti (YOLO, drone görüntüleri, gerçek zamanlı tespit),
+  genel yapay zeka gelişmeleri, veri analizi, Türkiye'de staj ve iş fırsatları, TeknoFest.
+
+gemini:
+  # Sırayla denenir: ilki hata verirse (kota, model kaldırılması vb.) sıradaki denenir.
+  # Güncel ücretsiz modelleri https://aistudio.google.com adresinden kontrol et
+  # ve gerekirse bu adları güncelle.
+  models:
+    - gemini-2.5-flash
+    - gemini-2.5-flash-lite
+
+# Konular ve kaynaklar.
+# Bir kaynak ya düz URL ya da {url, keywords} olabilir.
+# keywords verilirse sadece başlık/özetinde bu kelimelerden biri geçen kayıtlar alınır.
+topics:
+  - name: Görüntü İşleme ve Nesne Tespiti
+    emoji: "👁️"
+    max_items: 12
+    feeds:
+      - url: https://rss.arxiv.org/rss/cs.CV
+        keywords: [detection, yolo, drone, aerial, small object, tracking, real-time, edge, segmentation]
+      - https://huggingface.co/blog/feed.xml
+      - https://blog.roboflow.com/rss/
+      - https://developer.nvidia.com/blog/feed
+
+  - name: Yapay Zeka Gelişmeleri
+    emoji: "🤖"
+    feeds:
+      - https://openai.com/news/rss.xml
+      - https://blog.google/technology/ai/rss/
+      - https://www.marktechpost.com/feed/
+      -       - url: https://news.ycombinator.com/rss
+                keywords: [LLM, AI, GPT, model, agent, neural, vision, machine learning]
+
+  - name: Veri Analizi ve Veri Bilimi
+    emoji: "📊"
+    feeds:
+      - https://towardsdatascience.com/feed
+      - https://www.kdnuggets.com/feed
+
+  - name: Türkiye - TeknoFest, Staj ve İş
+    emoji: "🇹🇷"
+    feeds:
+      - https://news.google.com/rss/search?q=TEKNOFEST&hl=tr&gl=TR&ceid=TR:tr
+      - https://news.google.com/rss/search?q=yapay+zeka+staj&hl=tr&gl=TR&ceid=TR:tr
+      - https://news.google.com/rss/search?q=veri+analisti+staj&hl=tr&gl=TR&ceid=TR:tr
+      - url: https://webrazzi.com/feed/
+        keywords: [yapay zeka, yazılım, veri, teknofest, staj, girişim]
