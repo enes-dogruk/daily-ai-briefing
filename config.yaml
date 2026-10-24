@@ -46,8 +46,6 @@ topics:
       - https://openai.com/news/rss.xml
       - https://blog.google/technology/ai/rss/
       - https://www.marktechpost.com/feed/
-      -       - url: https://news.ycombinator.com/rss
-                keywords: [LLM, AI, GPT, model, agent, neural, vision, machine learning]
 
   - name: Veri Analizi ve Veri Bilimi
     emoji: "📊"
